@@ -31,7 +31,7 @@ export default function ContactFooter() {
                 <div className="absolute inset-0 bg-mint/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
                 <FaLinkedin size={20} className="text-gray-400 group-hover:text-mint relative z-10" />
               </a>
-              <a href="mailto:ayoubbaidane06@gmail.com" className="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-white/10 hover:border-mint hover:text-mint transition-all cursor-none group relative overflow-hidden">
+              <a href="mailto:baidaneayoub06@gmail.com" className="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-white/10 hover:border-mint hover:text-mint transition-all cursor-none group relative overflow-hidden">
                 <div className="absolute inset-0 bg-mint/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
                 <Mail size={20} className="text-gray-400 group-hover:text-mint relative z-10" />
               </a>
