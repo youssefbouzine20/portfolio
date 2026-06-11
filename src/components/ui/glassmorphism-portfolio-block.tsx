@@ -103,7 +103,7 @@ export function GlassmorphismPortfolioBlock() {
           <div className="relative grid gap-14 lg:grid-cols-2">
 
             {/* ── Left — Stats + Skills ── */}
-            <div className="space-y-10">
+            <div className="space-y-10 min-w-0">
               <div>
                 <Badge
                   variant="outline"
@@ -202,7 +202,7 @@ export function GlassmorphismPortfolioBlock() {
             </div>
 
             {/* ── Right — Social links ── */}
-            <div className="relative flex flex-col justify-center">
+            <div className="relative flex flex-col justify-center min-w-0">
               <div className="absolute inset-0 rounded-[28px] bg-gradient-to-b from-white/[0.06] via-transparent to-transparent blur-3xl" />
               <div className="relative overflow-hidden rounded-[24px] border border-white/[0.07] bg-white/[0.03] p-6 sm:p-8 backdrop-blur-xl">
 
