@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# development artifacts & AI instruction files
+AGENTS.md
+CLAUDE.md
+build.log
+ts-error.txt
+extract-cv.js

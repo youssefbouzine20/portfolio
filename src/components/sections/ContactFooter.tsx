@@ -1,100 +1,153 @@
 'use client';
-import { Mail, Send, FileText } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Send, FileText, CheckCircle, AlertCircle } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import AnimatedButton from '../ui/AnimatedButton';
 
 export default function ContactFooter() {
+  const [formState, setFormState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState('sending');
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/xreoplwa', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        setFormState('success');
+        form.reset();
+      } else {
+        setFormState('error');
+      }
+    } catch {
+      setFormState('error');
+    }
+  };
+
   return (
-    <footer id="contact" className="w-full bg-[#0a0f1c] pt-24 pb-8 px-6 border-t border-white/5 relative overflow-hidden">
-      {/* Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[300px] bg-mint/5 blur-[150px] pointer-events-none rounded-full"></div>
-      
+    <footer id="contact" className="w-full pt-28 pb-8 px-6 relative overflow-hidden border-t border-white/[0.06]">
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-          
-          {/* Left Side */}
+
+          {/* Left */}
           <div className="flex flex-col gap-6">
-            <h2 className="text-5xl md:text-6xl font-black text-white leading-tight font-poppins">
-              Let's build something <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-mint to-mint-light">great together.</span>
+            <span className="text-white/25 font-semibold uppercase tracking-widest text-xs">Contact</span>
+            <h2 className="text-5xl md:text-6xl font-black text-white/90 leading-tight">
+              Let&apos;s build something{' '}<br />
+              <span className="italic font-light text-white/40">great together.</span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-md">
-              Whether you have a project in mind, need a data pipeline architected, or just want to chat about AI.
+            <p className="text-white/40 text-lg max-w-md font-light leading-relaxed">
+              Whether you have an internship opportunity, a data project to collaborate on, or just want
+              to talk about AI agents and pipelines — I&apos;m all ears.
             </p>
-            
-            <div className="flex gap-4 mt-8">
-              <a href="https://github.com/BaidaneAyoub" target="_blank" rel="noreferrer" className="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-white/10 hover:border-mint hover:text-mint transition-all cursor-none group relative overflow-hidden">
-                <div className="absolute inset-0 bg-mint/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
-                <FaGithub size={20} className="text-gray-400 group-hover:text-mint relative z-10" />
-              </a>
-              <a href="https://www.linkedin.com/in/ayoub-baidane-1b603131a/" target="_blank" rel="noreferrer" className="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-white/10 hover:border-mint hover:text-mint transition-all cursor-none group relative overflow-hidden">
-                <div className="absolute inset-0 bg-mint/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
-                <FaLinkedin size={20} className="text-gray-400 group-hover:text-mint relative z-10" />
-              </a>
-              <a href="mailto:baidaneayoub06@gmail.com" className="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-white/10 hover:border-mint hover:text-mint transition-all cursor-none group relative overflow-hidden">
-                <div className="absolute inset-0 bg-mint/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
-                <Mail size={20} className="text-gray-400 group-hover:text-mint relative z-10" />
-              </a>
+
+            <div className="flex gap-3 mt-6">
+              {[
+                { href: 'https://github.com/youssefbouzine20', icon: <FaGithub size={18} />, label: 'GitHub' },
+                { href: 'https://www.linkedin.com/in/youssef-bouzine/', icon: <FaLinkedin size={18} />, label: 'LinkedIn' },
+                { href: 'mailto:youssefbouzine05@gmail.com', icon: <Mail size={18} />, label: 'Email' },
+              ].map(({ href, icon, label }) => (
+                <a key={label} href={href} target={label !== 'Email' ? '_blank' : undefined}
+                  rel={label !== 'Email' ? 'noreferrer' : undefined} aria-label={label}
+                  className="w-11 h-11 bg-white/[0.05] backdrop-blur-sm rounded-full flex items-center justify-center
+                    border border-white/10 text-white/40 hover:text-white hover:bg-white/[0.12] hover:border-white/25
+                    transition-all duration-200">
+                  {icon}
+                </a>
+              ))}
             </div>
-            
-            <div className="mt-4">
+
+            <div className="mt-2">
               <AnimatedButton variant="outline" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                <FileText size={18} /> Download Resume
+                <FileText size={16} /> Download Resume
               </AnimatedButton>
             </div>
           </div>
-          
-          {/* Right Side - Form */}
-          <div className="bg-surface/50 p-8 md:p-10 rounded-3xl border border-white/5 backdrop-blur-sm shadow-2xl">
-            <form action="https://formspree.io/f/xreoplwa" method="POST" className="flex flex-col gap-6" suppressHydrationWarning>
-              <div className="flex flex-col gap-2 relative">
-                <label className="text-xs uppercase tracking-wider font-semibold text-mint">Name</label>
-                <input 
-                  suppressHydrationWarning
-                  type="text" 
-                  name="name"
-                  placeholder="John Doe"
-                  required
-                  className="bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-mint focus:shadow-[0_0_10px_rgba(0,255,163,0.2)] transition-all w-full cursor-none selection:bg-mint selection:text-background"
-                />
+
+          {/* Right — Form */}
+          <div className="bg-white/[0.04] backdrop-blur-md p-8 md:p-10 rounded-3xl border border-white/[0.08] shadow-[0_8px_48px_rgba(0,0,0,0.3)]">
+
+            {formState === 'success' ? (
+              <div className="h-full flex flex-col items-center justify-center gap-4 py-12 text-center">
+                <CheckCircle className="w-12 h-12 text-green-400" strokeWidth={1.5} />
+                <h3 className="text-white/80 font-bold text-lg">Message sent!</h3>
+                <p className="text-white/40 text-sm max-w-xs">
+                  Thanks for reaching out. I&apos;ll get back to you as soon as possible.
+                </p>
+                <button
+                  onClick={() => setFormState('idle')}
+                  className="mt-4 text-xs text-white/30 hover:text-white/60 transition-colors border border-white/10 px-4 py-2 rounded-full"
+                >
+                  Send another message
+                </button>
               </div>
-              <div className="flex flex-col gap-2 relative">
-                <label className="text-xs uppercase tracking-wider font-semibold text-mint">Email</label>
-                <input 
-                  suppressHydrationWarning
-                  type="email" 
-                  name="email"
-                  placeholder="john@example.com"
-                  required
-                  className="bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-mint focus:shadow-[0_0_10px_rgba(0,255,163,0.2)] transition-all w-full cursor-none selection:bg-mint selection:text-background"
-                />
-              </div>
-              <div className="flex flex-col gap-2 relative">
-                <label className="text-xs uppercase tracking-wider font-semibold text-mint">Message</label>
-                <textarea 
-                  suppressHydrationWarning
-                  name="message"
-                  rows={4}
-                  required
-                  placeholder="Hello Ayoub, I'd like to discuss..."
-                  className="bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-mint focus:shadow-[0_0_10px_rgba(0,255,163,0.2)] transition-all w-full resize-none cursor-none selection:bg-mint selection:text-background"
-                ></textarea>
-              </div>
-              <AnimatedButton type="submit" variant="solid" className="w-full mt-2 hover:shadow-[0_0_30px_rgba(0,255,163,0.4)]">
-                Send Message <Send size={18} />
-              </AnimatedButton>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                {/* Honeypot — hidden from humans, catches spam bots (Formspree convention) */}
+                <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off"
+                  className="hidden" aria-hidden="true" />
+                {['Name', 'Email'].map((field) => (
+                  <div key={field} className="flex flex-col gap-1.5">
+                    <label htmlFor={`contact-${field.toLowerCase()}`}
+                      className="text-xs font-semibold uppercase tracking-wider text-white/40">{field}</label>
+                    <input
+                      id={`contact-${field.toLowerCase()}`}
+                      type={field === 'Email' ? 'email' : 'text'}
+                      name={field.toLowerCase()}
+                      placeholder={field === 'Email' ? 'jane@example.com' : 'Jane Smith'}
+                      required
+                      disabled={formState === 'sending'}
+                      className="bg-white/[0.06] border border-white/10 rounded-xl px-4 py-3 text-white
+                        placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors w-full text-sm
+                        disabled:opacity-50"
+                    />
+                  </div>
+                ))}
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="contact-message"
+                    className="text-xs font-semibold uppercase tracking-wider text-white/40">Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={4}
+                    required
+                    disabled={formState === 'sending'}
+                    placeholder="Hi, I'd like to discuss..."
+                    className="bg-white/[0.06] border border-white/10 rounded-xl px-4 py-3 text-white
+                      placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors w-full resize-none text-sm
+                      disabled:opacity-50"
+                  />
+                </div>
+
+                {formState === 'error' && (
+                  <div className="flex items-center gap-2 text-red-400/80 text-xs bg-red-400/5 border border-red-400/20 rounded-xl px-4 py-3">
+                    <AlertCircle size={14} />
+                    Something went wrong. Please try again or email me directly.
+                  </div>
+                )}
+
+                <AnimatedButton
+                  type="submit"
+                  variant="solid"
+                  className={`w-full mt-1 ${formState === 'sending' ? 'opacity-60 pointer-events-none' : ''}`}
+                >
+                  {formState === 'sending' ? 'Sending…' : <><Send size={15} /> Send Message</>}
+                </AnimatedButton>
+              </form>
+            )}
           </div>
-          
         </div>
-        
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Ayoub Baidane. All rights reserved.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <span className="hover:text-mint transition-colors cursor-none">ayoubbaidane06@gmail.com</span>
-            <span>•</span>
-            <span className="hover:text-mint transition-colors cursor-none">baidaneayoub@gmail.com</span>
-          </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/[0.06] text-xs text-white/20">
+          <p>© {new Date().getFullYear()} Youssef Bouzine. All rights reserved.</p>
+          <a href="mailto:youssefbouzine05@gmail.com"
+            className="hover:text-white/50 transition-colors mt-3 md:mt-0">youssefbouzine05@gmail.com</a>
         </div>
       </div>
     </footer>
