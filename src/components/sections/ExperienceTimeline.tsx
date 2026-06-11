@@ -10,7 +10,7 @@ const timelineData = [
   { title: "Visual Designer — AI Geeks Club", organization: "ENSATÉ Student Clubs", date: "2025 – Present", description: "Created the visual communication materials for technical events organized within ENSA.", type: "leadership" },
   { title: "Cycle Préparatoire Intégré", organization: "ENSATÉ — École Nationale des Sciences Appliquées de Tétouan", date: "2023 – 2025", description: "Intensive scientific training in mathematics, physics, and computer science. Preparation for national entrance exams to engineering schools.", type: "education" },
   { title: "Introduction to Git and GitHub", organization: "Google", date: "2024", description: "Version control fundamentals, branching workflows, and collaborative development practices.", type: "certification" },
-  { title: "Baccalauréat Sciences Physiques — Mention Bien", organization: "Lycée Paul Sabatier", date: "2023", description: "Graduated with honours (Mention Bien) in physical sciences and mathematics.", type: "education" },
+  { title: "Baccalauréat Sciences Physiques — Mention Très bien", organization: "Lycée Paul Sabatier", date: "2023", description: "Graduated with high honours (Mention Très bien) in physical sciences and mathematics.", type: "education" },
 ];
 
 export default function ExperienceTimeline() {
