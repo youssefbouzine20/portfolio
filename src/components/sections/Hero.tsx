@@ -203,10 +203,10 @@ export default function Hero() {
           <div className="relative text-center">
             <h1>
               <BlurText as="span" text="Youssef" delay={80} animateBy="letters" direction="top"
-                className="font-black text-[80px] sm:text-[120px] md:text-[160px] lg:text-[200px] leading-[0.8] tracking-tighter uppercase justify-center"
+                className="font-black text-[18vw] sm:text-[120px] md:text-[160px] lg:text-[200px] leading-[0.8] tracking-tighter uppercase justify-center"
                 style={{ color: 'rgba(255,255,255,0.88)', fontFamily: "'Inter', sans-serif" }} />
               <BlurText as="span" text="Bouzine" delay={80} animateBy="letters" direction="top"
-                className="font-black text-[80px] sm:text-[120px] md:text-[160px] lg:text-[200px] leading-[0.8] tracking-tighter uppercase justify-center"
+                className="font-black text-[18vw] sm:text-[120px] md:text-[160px] lg:text-[200px] leading-[0.8] tracking-tighter uppercase justify-center"
                 style={{ color: 'rgba(255,255,255,0.88)', fontFamily: "'Inter', sans-serif" }} />
             </h1>
 

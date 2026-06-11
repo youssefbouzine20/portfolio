@@ -86,10 +86,10 @@ export function ProjectShowcase() {
       onMouseMove={handleMouseMove}
       className="relative w-full max-w-3xl mx-auto px-6 py-16"
     >
-      {/* ── Floating image preview ── */}
+      {/* ── Floating image preview (desktop hover only) ── */}
       <div
         ref={previewRef}
-        className="pointer-events-none fixed z-50 overflow-hidden rounded-2xl"
+        className="pointer-events-none fixed z-50 overflow-hidden rounded-2xl hidden md:block"
         style={{
           left: 0,
           top:  0,
@@ -130,6 +130,11 @@ export function ProjectShowcase() {
           };
           const row = (
               <div className="relative py-6 border-t border-white/[0.07] transition-all duration-300">
+                {/* Inline image — phones have no hover, so the floating preview never shows there */}
+                <div className="relative w-full h-44 mb-5 rounded-xl overflow-hidden border border-white/10 md:hidden">
+                  <Image src={project.image} alt="" fill sizes="100vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c]/40 to-transparent" />
+                </div>
                 {/* Hover background glow */}
                 <div className={`absolute inset-0 -mx-4 px-4 bg-white/[0.03] rounded-xl
                   transition-all duration-300 ease-out
@@ -155,13 +160,13 @@ export function ProjectShowcase() {
                     </div>
 
                     <p className={`text-sm leading-relaxed transition-colors duration-300
-                      ${hoveredIndex === index ? 'text-white/55' : 'text-white/30'}`}>
+                      ${hoveredIndex === index ? 'text-white/55' : 'text-white/45 md:text-white/30'}`}>
                       {project.description}
                     </p>
 
                     {/* Tags */}
                     <div className={`flex flex-wrap gap-1.5 mt-3 transition-all duration-300
-                      ${hoveredIndex === index ? 'opacity-100' : 'opacity-40'}`}>
+                      ${hoveredIndex === index ? 'opacity-100' : 'opacity-100 md:opacity-40'}`}>
                       {project.tags.map(tag => (
                         <span key={tag} className="text-[10px] px-2 py-0.5 border border-white/10
                           bg-white/[0.05] text-white/40 rounded-full font-medium tracking-wide">

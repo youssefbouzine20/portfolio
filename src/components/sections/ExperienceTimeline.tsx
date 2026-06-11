@@ -19,7 +19,7 @@ export default function ExperienceTimeline() {
   const pathHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="experience" ref={containerRef} className="w-full min-h-screen py-28 px-6 relative">
+    <section id="experience" ref={containerRef} className="w-full min-h-screen py-28 px-6 relative overflow-x-hidden">
       <div className="container mx-auto max-w-4xl">
 
         <div className="text-center mb-20">
