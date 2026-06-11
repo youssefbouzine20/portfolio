@@ -94,7 +94,7 @@ export function GlassmorphismPortfolioBlock() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-2xl md:p-12"
+          className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-8 backdrop-blur-2xl md:p-12"
           style={{ boxShadow: '0 0 80px rgba(255,255,255,0.02), inset 0 1px 0 rgba(255,255,255,0.06)' }}
         >
           {/* Glass gradient */}
@@ -204,7 +204,7 @@ export function GlassmorphismPortfolioBlock() {
             {/* ── Right — Social links ── */}
             <div className="relative flex flex-col justify-center">
               <div className="absolute inset-0 rounded-[28px] bg-gradient-to-b from-white/[0.06] via-transparent to-transparent blur-3xl" />
-              <div className="relative overflow-hidden rounded-[24px] border border-white/[0.07] bg-white/[0.03] p-8 backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-[24px] border border-white/[0.07] bg-white/[0.03] p-6 sm:p-8 backdrop-blur-xl">
 
                 <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/25">
                   Connect
@@ -231,9 +231,9 @@ export function GlassmorphismPortfolioBlock() {
                           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.05] text-white/55">
                             <Icon className="h-4 w-4" />
                           </span>
-                          <div>
-                            <p className="text-sm font-semibold text-white/75">{social.label}</p>
-                            <p className="text-xs text-white/30">{social.handle}</p>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold text-white/75 truncate">{social.label}</p>
+                            <p className="text-xs text-white/30 truncate">{social.handle}</p>
                           </div>
                         </div>
                         <ArrowUpRight className="h-4 w-4 text-white/20 transition-[transform,color] duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white/55" />
