@@ -67,7 +67,7 @@ const socialLinks: SocialLink[] = [
   {
     label: "LinkedIn",
     handle: "Youssef Bouzine",
-    href: "https://www.linkedin.com/in/youssef-bouzine/",
+    href: "https://www.linkedin.com/in/youssef-bouzine-128179349/",
     icon: Users,
   },
   {

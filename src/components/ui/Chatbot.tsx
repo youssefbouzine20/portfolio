@@ -47,7 +47,7 @@ export default function Chatbot() {
       else if (lower.includes('education') || lower.includes('school') || lower.includes('degree'))
         reply = "Studying Cycle Ingénieur in Big Data & AI at ENSATÉ (2025–2028). IBM Data Engineering Certificate (6 modules) and DeepLearning.AI ML Specialization in progress.";
       else if (lower.includes('contact') || lower.includes('hire') || lower.includes('intern') || lower.includes('stage'))
-        reply = "Youssef is actively seeking an internship! Use the contact form at the bottom, or connect on LinkedIn: linkedin.com/in/youssef-bouzine.";
+        reply = "Youssef is actively seeking an internship! Use the contact form at the bottom, or connect on LinkedIn: linkedin.com/in/youssef-bouzine-128179349.";
       else if (/\b(hi|hello|hey|bonjour|salut)\b/.test(lower))
         reply = "Hello! How can I help you learn more about Youssef Bouzine?";
       else if (lower.includes('location') || lower.includes('where') || lower.includes('based'))

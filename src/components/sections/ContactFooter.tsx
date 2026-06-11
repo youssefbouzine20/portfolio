@@ -50,7 +50,7 @@ export default function ContactFooter() {
             <div className="flex gap-3 mt-6">
               {[
                 { href: 'https://github.com/youssefbouzine20', icon: <FaGithub size={18} />, label: 'GitHub' },
-                { href: 'https://www.linkedin.com/in/youssef-bouzine/', icon: <FaLinkedin size={18} />, label: 'LinkedIn' },
+                { href: 'https://www.linkedin.com/in/youssef-bouzine-128179349/', icon: <FaLinkedin size={18} />, label: 'LinkedIn' },
                 { href: 'mailto:youssefbouzine05@gmail.com', icon: <Mail size={18} />, label: 'Email' },
               ].map(({ href, icon, label }) => (
                 <a key={label} href={href} target={label !== 'Email' ? '_blank' : undefined}
