@@ -227,8 +227,8 @@ export function GlassmorphismPortfolioBlock() {
                           hover:-translate-y-0.5 hover:border-white/[0.14] hover:bg-white/[0.07] hover:shadow-lg"
                         style={{ willChange: 'transform' }}
                       >
-                        <div className="flex items-center gap-3">
-                          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.05] text-white/55">
+                        <div className="flex items-center gap-3 min-w-0 flex-1">
+                          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.05] text-white/55">
                             <Icon className="h-4 w-4" />
                           </span>
                           <div className="min-w-0 flex-1">
@@ -236,7 +236,7 @@ export function GlassmorphismPortfolioBlock() {
                             <p className="text-xs text-white/30 truncate">{social.handle}</p>
                           </div>
                         </div>
-                        <ArrowUpRight className="h-4 w-4 text-white/20 transition-[transform,color] duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white/55" />
+                        <ArrowUpRight className="h-4 w-4 shrink-0 text-white/20 transition-[transform,color] duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white/55" />
                       </a>
                     );
                   })}
@@ -244,7 +244,7 @@ export function GlassmorphismPortfolioBlock() {
 
                 {/* Availability badge */}
                 <div className="mt-6 flex items-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">
-                  <span className="relative flex h-2 w-2">
+                  <span className="relative flex h-2 w-2 shrink-0">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
                   </span>
